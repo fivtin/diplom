@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "diplom"
+version = "0.1.0"
+description = ""
+authors = ["vitt <fivtin@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+psycopg2-binary = "^2.9.9"
+python-dotenv = "^1.0.1"
+djangorestframework = "^3.15.2"
+redis = "^5.0.7"
+pillow = "^10.4.0"
+django-filter = "^24.2"
+djangorestframework-simplejwt = "^5.3.1"
+coverage = "^7.6.0"
+coreapi = "^2.3.3"
+drf-yasg = "^1.21.7"
+django-cors-headers = "^4.4.0"
+requests = "^2.32.3"
+celery = "^5.4.0"
+django-celery-beat = "^2.6.0"
+eventlet = "^0.36.1"
+django = "^5.0.7"
+setuptools = "^74.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
