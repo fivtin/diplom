@@ -34,7 +34,7 @@ class TaskUpdateAPIView(UpdateAPIView):
     """Update task data."""
 
     serializer_class = TaskCreateSerializer
-    permission_classes = [IsOwner]
+    permission_classes = [IsAuthenticated]
     queryset = Task.objects.all()
 
 
@@ -43,21 +43,20 @@ class TaskRetrieveAPIView(RetrieveAPIView):
 
     serializer_class = TaskCreateSerializer
     queryset = Task.objects.all()
-    permission_classes = [IsOwner]
+    permission_classes = [IsAuthenticated]
 
 
 class TaskDestroyAPIView(DestroyAPIView):
     """Destroy task."""
 
     queryset = Task.objects.all()
-    permission_classes = [IsOwner]
+    permission_classes = [IsAuthenticated]
 
 
 class TaskImportantListAPIView(ListAPIView):
     serializer_class = TaskImportantSerializer
     queryset = Task.objects.all()
-    permission_classes = [AllowAny]
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return Task.objects.filter(

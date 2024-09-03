@@ -14,7 +14,7 @@ class EmployeeListAPIView(ListAPIView):
 
     serializer_class = EmployeeSerializer
     queryset = Employee.objects.all()
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     # pagination_class = HabitPagination
 
     # def get_queryset(self):
@@ -64,7 +64,7 @@ class EmployeeActiveTaskListAPIView(ListAPIView):
 
     queryset = Employee.objects.all()
     serializer_class = EmployeeActiveTaskSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return (Employee.objects.annotate(
