@@ -4,6 +4,7 @@ from django.db import models
 
 
 class Employee(models.Model):
+    """Implementation of the employee model."""
 
     full_name = models.CharField(max_length=256, verbose_name='full name')
     position = models.CharField(max_length=128, verbose_name='position')

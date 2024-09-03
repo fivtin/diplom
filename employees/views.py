@@ -3,7 +3,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, R
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
 from employees.models import Employee
-from employees.serializers import EmployeeSerializer, EmployeeTaskSerializer  # , EmployeeCreateSerializer
+from employees.serializers import EmployeeSerializer, EmployeeActiveTaskSerializer  # , EmployeeCreateSerializer
 from users.permissions import IsOwner
 
 
@@ -59,11 +59,11 @@ class EmployeeDestroyAPIView(DestroyAPIView):
     permission_classes = [IsAdminUser]
 
 
-class EmployeeTaskListAPIView(ListAPIView):
-    """View a list of employees with tasks."""
+class EmployeeActiveTaskListAPIView(ListAPIView):
+    """View a list of employees with active tasks sorted by number of tasks."""
 
     queryset = Employee.objects.all()
-    serializer_class = EmployeeTaskSerializer
+    serializer_class = EmployeeActiveTaskSerializer
     permission_classes = [AllowAny]
 
     def get_queryset(self):

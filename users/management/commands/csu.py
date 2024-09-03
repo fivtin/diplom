@@ -26,15 +26,4 @@ class Command(BaseCommand):
         user.is_staff = False
         user.is_active = True
         user.is_superuser = False
-        # user.tgm_id = os.getenv('TELEGRAM_CHAT_ID')
         user.save()
-
-        # user = User.objects.create(
-        #     email='guest@example.com',
-        #     first_name='guest'
-        # )
-        # user.set_password('guest1guest')
-        # user.is_staff = False
-        # user.is_active = True
-        # user.is_superuser = False
-        # user.save()

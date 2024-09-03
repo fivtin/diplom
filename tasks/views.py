@@ -1,10 +1,10 @@
-from django.db.models import Q
-from django.shortcuts import render
-from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, RetrieveAPIView, DestroyAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, \
+    UpdateAPIView, RetrieveAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from tasks.models import Task
-from tasks.serializers import TaskCreateSerializer, TaskSerializer, TaskImportantSerializer
+from tasks.serializers import TaskCreateSerializer, TaskSerializer, \
+    TaskImportantSerializer
 from users.permissions import IsOwner
 
 
@@ -17,10 +17,6 @@ class TaskListAPIView(ListAPIView):
     queryset = Task.objects.all()
     permission_classes = [IsAuthenticated]
     # pagination_class = HabitPagination
-
-    # def get_queryset(self):
-    #     queryset = Habit.objects.filter(user=self.request.user)
-    #     return queryset
 
 
 class TaskCreateAPIView(CreateAPIView):
@@ -64,7 +60,12 @@ class TaskImportantListAPIView(ListAPIView):
     # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return Task.objects.filter(children__employee__isnull=False, children__status=0, employee__isnull=True, status=0)
+        return Task.objects.filter(
+            children__employee__isnull=False,
+            children__status=0,
+            employee__isnull=True,
+            status=0
+        )
         # self.queryset = Task.objects.filter(
         #     Q(status=0),
         #     Q(parent__status=Task.STATUS_IN_PROGRESS),

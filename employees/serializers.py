@@ -2,7 +2,6 @@ from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
 
 from employees.models import Employee
-from tasks.models import Task
 from tasks.serializers import TaskSerializer
 
 
@@ -28,8 +27,7 @@ class EmployeeSerializer(ModelSerializer):
         # ]
 
 
-class EmployeeTaskSerializer(ModelSerializer):
-    # tasks = SerializerMethodField(read_only=True)
+class EmployeeActiveTaskSerializer(ModelSerializer):
     tasks = TaskSerializer(many=True, read_only=True)
     active_tasks_count = SerializerMethodField()
 
@@ -39,7 +37,3 @@ class EmployeeTaskSerializer(ModelSerializer):
 
     def get_active_tasks_count(self, obj):
         return obj.tasks.filter(status=0).count()
-
-
-    # def get_tasks(self, employee):
-    #     return Task.objects.filter(employee=employee, ).count()

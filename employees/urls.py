@@ -2,7 +2,7 @@ from django.urls import path
 
 from employees.apps import EmployeesConfig
 from employees.views import EmployeeListAPIView, EmployeeCreateAPIView, EmployeeDestroyAPIView, EmployeeRetrieveAPIView, \
-    EmployeeUpdateAPIView, EmployeeTaskListAPIView
+    EmployeeUpdateAPIView, EmployeeActiveTaskListAPIView
 
 app_name = EmployeesConfig.name
 
@@ -13,5 +13,5 @@ urlpatterns = [
     path('<int:pk>/update/', EmployeeUpdateAPIView.as_view(), name='employee_update'),
     path('<int:pk>/', EmployeeRetrieveAPIView.as_view(), name='employee_view'),
     path('<int:pk>/delete/', EmployeeDestroyAPIView.as_view(), name='employee_delete'),
-    path('tasks/', EmployeeTaskListAPIView.as_view(), name='employee_tasklist')
+    path('active/', EmployeeActiveTaskListAPIView.as_view(), name='employee_list_active_task')
 ]

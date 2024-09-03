@@ -25,12 +25,6 @@ class User(AbstractUser):
         verbose_name="Фамилия"
     )
 
-    # token = models.CharField(
-    #     max_length=128,
-    #     **NULLABLE,
-    #     verbose_name='токен'
-    # )
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
