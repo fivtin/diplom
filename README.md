@@ -8,11 +8,13 @@
 1. Установите Git и Docker
 2. Скопируйте приложение с репозитория используя команду __git clone https://github.com/fivtin/task_tracker.git__
 3. Перейдите в корневую папку проекта (где располагается файл __docker-compose.yaml__)
-4. Cоздайте файл ___.env___ (или переименуйте __.env-sample__) и установите необходимые значения переменных (обязательно задайте пароли и секретный ключ).
+4. Cоздайте файл ___.env___ (или переименуйте __.env-sample__) и установите необходимые значения переменных (обязательно задайте пароли БД, суперпользователя и секретный ключ).
 5. Запустите терминал в корневой папке и выполните команды
    - __docker-compose build__
    - __docker-compose up -d__
-   - __docker-compose exec app python3 manage.py csu__ (создает пользователей admin@example.com и user@example.com).
+   - выполните одну из команд ниже для добавления данных:
+      * __docker-compose exec app python3 manage.py csu__ (создает пользователей admin@example.com и user@example.com)
+      * __docker-compose exec app python3 manage.py loaddata data.json__ (добавляет пользователей admin@example.com и user@example.com и записи в таблицы user, employee, task)
 6. Контейнер создан и запущен.
 
 # Пользование сервисом
@@ -23,7 +25,7 @@
 Необходимые поля для запросов можно посмотреть в докумментации по ссылкам ниже.
 
 * Пользователи и пароли по умолчанию (для проверяющего):
-    - ID=1 admin@example.com - пароль из файла __.env__
+    - ID=1 admin@example.com - пароль из файла __.env__ или __qwe123rty__ (если использовали loaddata)
     - ID=2 user@example.com - user1user
 
 ### Основные URL
