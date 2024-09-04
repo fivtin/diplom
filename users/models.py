@@ -7,6 +7,7 @@ from config import NULLABLE
 # Create your models here.
 
 class User(AbstractUser):
+    """Implementation of the user model."""
 
     username = None
     email = models.EmailField(
@@ -17,20 +18,20 @@ class User(AbstractUser):
     first_name = models.CharField(
         max_length=150,
         **NULLABLE,
-        verbose_name="Имя"
+        verbose_name="first name"
     )
     last_name = models.CharField(
         max_length=150,
         **NULLABLE,
-        verbose_name="Фамилия"
+        verbose_name="last name"
     )
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     class Meta:
-        verbose_name = 'пользователь'
-        verbose_name_plural = 'пользователи'
+        verbose_name = 'user'
+        verbose_name_plural = 'users'
 
     def __str__(self):
         return f'{self.email}'

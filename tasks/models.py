@@ -20,13 +20,29 @@ class Task(models.Model):
 
     title = models.CharField(max_length=256, verbose_name='title')
 
-    employee = models.ForeignKey(Employee, on_delete=models.SET_NULL, **NULLABLE, verbose_name='performer', related_name='tasks')
+    employee = models.ForeignKey(
+        Employee,
+        on_delete=models.SET_NULL,
+        **NULLABLE,
+        verbose_name='performer',
+        related_name='tasks'
+    )
 
     deadline = models.DateField(**NULLABLE, verbose_name='deadline')
 
-    status = models.PositiveSmallIntegerField(default=STATUS_ACTIVE, choices=JOB_STATUS_CHOICES, verbose_name='status')
+    status = models.PositiveSmallIntegerField(
+        default=STATUS_ACTIVE,
+        choices=JOB_STATUS_CHOICES,
+        verbose_name='status'
+    )
 
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, **NULLABLE, verbose_name='parent task', related_name='children')
+    parent = models.ForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        **NULLABLE,
+        verbose_name='parent task',
+        related_name='children'
+    )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='creator')
 

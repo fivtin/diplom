@@ -37,19 +37,6 @@ class TaskTestCase(APITestCase):
         self.assertEqual(Task.objects.all().count(), 2)
         self.assertEqual(response.json()['title'], 'New task')
 
-    # def test_habit_wrong_create(self):
-    #     """Testing adding a habit."""
-    #
-    #     url = reverse("habit:habit_create")
-    #     data = {
-    #         "action": "action",
-    #         "place": "place",
-    #         "related_to": 1,
-    #         "reward": "reward"
-    #     }
-    #     response = self.client.post(url, data)
-    #     self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-
     def test_task_update(self):
         """Testing a partial task update."""
 
@@ -85,7 +72,7 @@ class TaskTestCase(APITestCase):
             full_name="employee",
             position="tester"
         )
-        subtask = Task.objects.create(
+        Task.objects.create(
             title="Subtask",
             employee=employee,
             deadline=None,

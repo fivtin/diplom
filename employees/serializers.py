@@ -11,22 +11,6 @@ class EmployeeSerializer(ModelSerializer):
         fields = '__all__'
 
 
-# class EmployeeCreateSerializer(ModelSerializer):
-#     class Meta:
-#         model = Employee
-#         exclude = ('user', )
-        # validators = [
-        #     RelatedRewardValidator('related_to', 'reward'),
-        #     TimeDurationValidator('duration'),
-        #     RelatedIsPleasantValidator('related_to'),
-        #     PleasantNotRewardAndRelatedValidator(
-        #         'is_pleasant',
-        #         'related_to',
-        #         'reward'),
-        #     PeriodValidator('period'),
-        # ]
-
-
 class EmployeeActiveTaskSerializer(ModelSerializer):
     tasks = TaskSerializer(many=True, read_only=True)
     active_tasks_count = SerializerMethodField()

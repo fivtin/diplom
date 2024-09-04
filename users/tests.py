@@ -9,6 +9,8 @@ class UserTestCase(APITestCase):
 
     def setUp(self):
         self.user = User.objects.create(email="test@example.com")
+        self.user.set_password("test")
+        self.user.save()
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
 
@@ -23,3 +25,15 @@ class UserTestCase(APITestCase):
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(User.objects.all().count(), 2)
+
+    def test_receiving_token(self):
+        """Check receipt of token."""
+
+        url = reverse("users:token_obtain_pair")
+        data = {
+            "email": "test@example.com",
+            "password": "test"
+        }
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(bool(response.json().get("access")), True)

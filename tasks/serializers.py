@@ -41,13 +41,3 @@ class TaskCreateSerializer(ModelSerializer):
     class Meta:
         model = Task
         exclude = ('user', )
-        # validators = [
-        #     RelatedRewardValidator('related_to', 'reward'),
-        #     TimeDurationValidator('duration'),
-        #     RelatedIsPleasantValidator('related_to'),
-        #     PleasantNotRewardAndRelatedValidator(
-        #         'is_pleasant',
-        #         'related_to',
-        #         'reward'),
-        #     PeriodValidator('period'),
-        # ]

@@ -35,19 +35,6 @@ class EmployeeTestCase(APITestCase):
         self.assertEqual(Employee.objects.all().count(), 2)
         self.assertEqual(response.json()['position'], 'assistant')
 
-    # def test_employee_wrong_create(self):
-    #     """Testing adding a employee."""
-    #
-    #     url = reverse("employee:employee_create")
-    #     data = {
-    #         "action": "action",
-    #         "place": "place",
-    #         "related_to": 1,
-    #         "reward": "reward"
-    #     }
-    #     response = self.client.post(url, data)
-    #     self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-
     def test_employee_update(self):
         """Testing a partial employee update."""
 
@@ -79,7 +66,7 @@ class EmployeeTestCase(APITestCase):
     def test_employee_list_with_active_tasks(self):
         """Testing getting a list of employees with active tasks."""
 
-        task = Task.objects.create(
+        Task.objects.create(
             title="Test task",
             employee=self.employee,
             deadline=None,
